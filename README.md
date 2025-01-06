@@ -9,17 +9,20 @@ The ASP Containerlab enviornment consists of the following:
 - A Windows VM if you wish to access the devices using a remote desktop client
 
 ## Management Network
-dcloud has a flat management network for which the virtual machines attach via the host VM.  
+Cisco's dcloud has a flat management network for which the virtual machines attach via the host VM.  
 - All containers on the host have at least 1 management interface and those are bridged to the flat management network (198.18.128.0/18)
 - Routers (containers or VMs wrapped in containers) have a dedicated management interface. 
 - All router management interfaces are are in a management VRF called Mgmt-intf
 - Management IP addresses are directly acccessable from either the VPN client or any host. 
 
-## Automated Labs
-There are a few automated labs that are prebuilt.  
+The management network configuration allows for direct access of the containers via their management interface without any additional configuration or routing. This implies that you can access the containerized NOS directly via SSH, NETCONF, gRPC, etc. 
+
+## ASP Containerlab Labs
+There are a few automated labs that are prebuilt and will get you quickly up and running with working configurations. They consist of the following:   
 - clab yaml file that describes the lab topology
 - Ansible playbook that builds the configuration for each device based upon device-level (hostvars) or global variables (global vars)
-- Uses NAPALM to test or deploy the assembled configuration to the devices using NETCONF
+- Uses NAPALM to test or deploy the assembled configuration to the devices using NETCONF.
+- The ansible playbook/napalm module does a full commit replace via NETCONF when run. 
 
 ## Getting Started
 1. Start your dcloud instance
@@ -32,6 +35,7 @@ ssh admin@198.18.130.5
 ```
 
 4. Initialize the lab controller.
+
 The lab controller is a simple python script that ensures that you have both any new labs that have been created and the most up to date versions of those labs.
 Each lab has it's own github repository which contains at minimum the containerlab topology file, management network configuration, node definitions, and versions of code
 
