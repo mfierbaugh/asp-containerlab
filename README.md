@@ -22,21 +22,34 @@ There are a few automated labs that are prebuilt.
 - Uses NAPALM to test or deploy the assembled configuration to the devices using NETCONF
 
 ## Getting Started
-Start your dcloud instance
+1. Start your dcloud instance
 
-Use the Cisco Secure Client to VPN into the dcloud instance.  
+2. Use the Cisco Secure Client to VPN into the dcloud instance.  
 
-Access the Containerlab VM
+3. Access the Containerlab VM via ssh or using the remote-ssh functionality in VS Code
+```
+ssh admin@198.18.130.5
+```
 
-Initialize the controller
+4. Initialize the lab controller.
 The lab controller is a simple python script that ensures that you have both any new labs that have been created and the most up to date versions of those labs.
 Each lab has it's own github repository which contains at minimum the containerlab topology file, management network configuration, node definitions, and versions of code
 
+admin@clab-host:~$ ./lab_controller.py
+
+```
+./lab_controller.py
+```
+
 Change directories to the desired lab
 
-Start the lab topology 
-sudo clab deploy
+example: 
+admin@clab-host:~$ cd asp_sr_mpls_lab/
 
+Start the lab topology 
+```
+sudo clab deploy
+```
 
 ## Automated Lab Configuration 
 Once the lab topology is fully running, you can build the configurations and commit them to each device using the ansible playbook. 
