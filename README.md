@@ -17,4 +17,4 @@ dcloud has a flat management network for which the virtual machines attach via t
 Automated Labs
 There are a few automated labs that are prebuilt.  
 - clab yaml file that describes the lab topology
-- Ansible playbook that 
+- Ansible playbook that  
