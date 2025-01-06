@@ -46,6 +46,10 @@ Change directories to the desired lab
 example: 
 admin@clab-host:~$ cd asp_sr_mpls_lab/
 
+```
+cd asp_sr_mpls_lab/
+```
+
 Start the lab topology 
 ```
 sudo clab deploy
