@@ -17,7 +17,7 @@ Cisco's dcloud has a flat management network for which the virtual machines atta
 
 The management network configuration allows for direct access of the containers via their management interface without any additional configuration or routing. This implies that you can access the containerized NOS directly via SSH, NETCONF, gRPC, etc. 
 
-## ASP Containerlab Labs
+## Pre-built Demos and Labs
 There are a few automated labs that are prebuilt and will get you quickly up and running with working configurations. They consist of the following:   
 - clab yaml file that describes the lab topology
 - Ansible playbook that builds the configuration for each device based upon device-level (hostvars) or global variables (global vars)
