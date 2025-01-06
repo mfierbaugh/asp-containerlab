@@ -3,8 +3,8 @@ ASP Containerlab is a pre-built environment meant to be run on Cisco's dcloud in
 
 The ASP Containerlab enviornment consists of the following:
 - A single large VM for running the containers using containerlab (http://containerlab.dev)
- - The VM has been specifically configured for the additional resources needed by Cisco's XRd.
- - The local docker repo contains a few containers used by some pre-built labs, including Cisco's T-Rex Traffic Generator 
+    - The VM has been specifically configured for the additional resources needed by Cisco's XRd.
+    - The local docker repo contains a few containers used by some pre-built labs, including Cisco's T-Rex Traffic Generator 
 - Small/Medium VM for running a preconfigured telemetry stack (Telegraf/Influx/Grafana)
 - A Windows VM if you wish to access the devices using a remote desktop client
 
