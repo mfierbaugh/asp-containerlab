@@ -36,8 +36,7 @@ ssh admin@198.18.130.5
 
 4. Initialize the lab controller.
 
-The lab controller is a simple python script that ensures that you have both any new labs that have been created and the most up to date versions of those labs.
-Each lab has it's own github repository which contains at minimum the containerlab topology file, management network configuration, node definitions, and versions of code
+The lab controller is a simple python script that pulls the currated list of available labs that are built using the ASP ContainerLab enviornment.  It will also update the existing labs to their latest version.  Each lab has it's own github repository which contains at minimum the containerlab topology file, management network configuration, node definitions, and versions of code
 
 admin@clab-host:~$ ./lab_controller.py
 
