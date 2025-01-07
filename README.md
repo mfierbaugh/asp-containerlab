@@ -1,8 +1,8 @@
 # ASP Containerlab
-ASP Containerlab is a pre-built environment meant to be run on Cisco's dcloud infrastructure.  The dcloud VM can access both public docker repos and has read access to pull from a  central repository of images stored on a private repo.  There is a collection of pre-built labs that leverage the VM's setup as a way to reduce the amount of time to create/build/configure a working lab/demo. These labs are stored in github and accessible via the dcloud VM.  
+ASP Containerlab is a pre-built environment meant to be run on Cisco's dcloud infrastructure.  The dcloud VM can access both public docker repos and has read access to pull from a  central repository of images stored on a private repo.  There is a collection of pre-built labs that leverage the VM's setup as a way to reduce the amount of time to create/build/configure a working lab/demo. These labs are stored in github and accessable via the dcloud VM. 
 
-The ASP Containerlab environment consists of the following:
-- A single large VM for running the containers using Containerlab (http://containerlab.dev)
+The ASP Containerlab enviornment consists of the following:
+- A single large VM for running the containers using containerlab (http://containerlab.dev)
     - The VM has been specifically configured for the additional resources needed by Cisco's XRd.
     - The local docker repo contains a few containers used by some pre-built labs, including Cisco's T-Rex Traffic Generator 
 - Small/Medium VM for running a preconfigured telemetry stack (Telegraf/Influx/Grafana)
@@ -13,7 +13,7 @@ Cisco's dcloud has a flat management network for which the virtual machines atta
 - All containers on the host have at least 1 management interface and those are bridged to the flat management network (198.18.128.0/18)
 - Routers (containers or VMs wrapped in containers) have a dedicated management interface. 
 - All router management interfaces are are in a management VRF called Mgmt-intf
-- Management IP addresses are directly accessible from either the VPN client or any host. 
+- Management IP addresses are directly acccessable from either the VPN client or any host. 
 
 The management network configuration allows for direct access of the containers via their management interface without any additional configuration or routing. This implies that you can access the containerized NOS directly via SSH, NETCONF, gRPC, etc. 
 
@@ -34,17 +34,7 @@ There are a few automated labs that are prebuilt and will get you quickly up and
 ssh admin@198.18.130.5
 ```
 
-4. Initialize the lab controller.
-
-The lab controller is a simple python script that pulls the curated list of available labs that are built using the ASP ContainerLab environment.  It will also update the existing labs to their latest version.  Each lab has it's own GitHub repository which contains at minimum the containerlab topology file, management network configuration, node definitions, and versions of code
-
-admin@clab-host:~$ ./lab_controller.py
-
-```
-./lab_controller.py
-```
-
-5. Change directories to the desired lab
+4. Change directories to the desired lab
 
 example: 
 admin@clab-host:~$ cd asp_sr_mpls_lab/
@@ -53,9 +43,22 @@ admin@clab-host:~$ cd asp_sr_mpls_lab/
 cd asp_sr_mpls_lab/
 ```
 
-6. Start the lab topology 
+5. Start the lab topology 
 ```
 sudo clab deploy
+```
+
+## Refreshing the list of labs
+When the ASP ContainerLab enviornment boots, it automatically retrieves a list of labs using lab_controller.py.  If you need to refresh the labs you can simply re-run this script. 
+
+
+The lab controller is a simple python script that ensures that you have both any new labs that have been created and the most up to date versions of those labs.
+Each lab has it's own github repository which contains at minimum the containerlab topology file, management network configuration, node definitions, and versions of code
+
+admin@clab-host:~$ ./lab_controller.py
+
+```
+./lab_controller.py
 ```
 
 ## Stopping the lab
@@ -64,5 +67,11 @@ sudo clab deploy
 sudo clab destroy
 ```
 
-## Where to go from here
-Each lab has its own GitHub Repo.  Consult the README.md file for each lab to determine the topology and follow the lab/demo guide.  
+## Automated Lab Configuration 
+Once the lab topology is fully running, you can build the configurations and commit them to each device using the ansible playbook. 
+
+From the lab directory run:
+
+```
+./config_lab
+```
