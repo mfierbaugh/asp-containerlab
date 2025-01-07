@@ -64,11 +64,5 @@ sudo clab deploy
 sudo clab destroy
 ```
 
-## Automated Lab Configuration 
-Once the lab topology is fully running, you can build the configurations and commit them to each device using the ansible playbook. 
-
-From the lab directory run:
-
-```
-./config_lab
-```
+## Where to go from here
+Each lab has it's own GitHub Repo.  Consult the README.md file for each lab to determine the topology and follow the lab/demo guide.  
