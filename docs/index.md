@@ -34,11 +34,7 @@ There are a few automated labs that are prebuilt and will get you quickly up and
 ssh admin@198.18.130.5
 ```
 
-4. Change directories to the desired lab
-
-example: 
-admin@clab-host:~$ cd asp_sr_mpls_lab/
-
+4. Change directories to the desired lab.  As an example, the lab we are selecting below is the asp_sr_mpls_lab which is the Introduction to SR-MPLS. 
 ```
 cd asp_sr_mpls_lab/
 ```

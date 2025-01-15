@@ -36,8 +36,8 @@ ssh admin@198.18.130.5
 
 4. Change directories to the desired lab
 
-example: 
-admin@clab-host:~$ cd asp_sr_mpls_lab/
+    example: 
+    admin@clab-host:~$ cd asp_sr_mpls_lab/
 
 ```
 cd asp_sr_mpls_lab/
