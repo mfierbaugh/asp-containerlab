@@ -41,8 +41,9 @@ def pull_playbook(pb_dir, repo):
               desc ="Updating " + pb_dir): 
         sleep(.01)
 
-update_clab()
 update_controller()
+update_clab()
+
 
 for playbook_dir,repo_url in yaml.load(open(config_file), yaml.FullLoader)['labs'].items():
     if is_valid_directory(playbook_dir):
