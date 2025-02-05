@@ -8,11 +8,16 @@
 # import libraries 
 import git
 import yaml
+import subprocess
 from pathlib import Path
 from tqdm import tqdm
 from time import sleep
 
+
 config_file = 'labs.yml'
+
+def update_clab():
+    subprocess.call(['sh', './update.sh'])
 
 def update_controller():
     git.cmd.Git().pull()
@@ -36,6 +41,7 @@ def pull_playbook(pb_dir, repo):
               desc ="Updating " + pb_dir): 
         sleep(.01)
 
+update_clab()
 update_controller()
 
 for playbook_dir,repo_url in yaml.load(open(config_file), yaml.FullLoader)['labs'].items():
