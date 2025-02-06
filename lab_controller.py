@@ -16,23 +16,6 @@ from time import sleep
 
 config_file = 'labs.yml'
 
-sudo_password = 'cisco123'
-command = 'containerlab version upgrade'
-command = command.split()
-
-cmd1 = subprocess.Popen(['echo',sudo_password], stdout=subprocess.PIPE)
-cmd2 = subprocess.Popen(['sudo','-S'] + command, stdin=cmd1.stdout, stdout=subprocess.PIPE)
-
-output = cmd2.stdout.read().decode() 
-
-def update_clab():
-    command = 'containerlab version upgrade'
-    command = command.split()
-    cmd1 = subprocess.Popen(['echo',sudo_password], stdout=subprocess.PIPE)
-    cmd2 = subprocess.Popen(['sudo','-S'] + command, stdin=cmd1.stdout, stdout=subprocess.PIPE)
-    output = cmd2.stdout.read().decode()
-#    subprocess.call(['sh', './update.sh'])
-
 def update_controller():
     git.cmd.Git().pull()
     for i in tqdm(range(0, 100), total = 100, 
@@ -56,7 +39,6 @@ def pull_playbook(pb_dir, repo):
         sleep(.01)
 
 update_controller()
-update_clab()
 
 
 for playbook_dir,repo_url in yaml.load(open(config_file), yaml.FullLoader)['labs'].items():
