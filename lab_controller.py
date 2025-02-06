@@ -16,8 +16,22 @@ from time import sleep
 
 config_file = 'labs.yml'
 
+sudo_password = 'cisco123'
+command = 'containerlab version upgrade'
+command = command.split()
+
+cmd1 = subprocess.Popen(['echo',sudo_password], stdout=subprocess.PIPE)
+cmd2 = subprocess.Popen(['sudo','-S'] + command, stdin=cmd1.stdout, stdout=subprocess.PIPE)
+
+output = cmd2.stdout.read().decode() 
+
 def update_clab():
-    subprocess.call(['sh', './update.sh'])
+    command = 'containerlab version upgrade'
+    command = command.split()
+    cmd1 = subprocess.Popen(['echo',sudo_password], stdout=subprocess.PIPE)
+    cmd2 = subprocess.Popen(['sudo','-S'] + command, stdin=cmd1.stdout, stdout=subprocess.PIPE)
+    output = cmd2.stdout.read().decode()
+#    subprocess.call(['sh', './update.sh'])
 
 def update_controller():
     git.cmd.Git().pull()
